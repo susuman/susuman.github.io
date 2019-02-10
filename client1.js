@@ -38,5 +38,5 @@ if(nr != a)
 function on_touch(e)
 {	
 	setTimeout(function(){svg.remove(svg.appendChild);}, 5000)
-	setTimeout(function(){alert("ai apasat de" c "ori");}, 6000);
+	setTimeout(function(){alert(c);}, 6000);
 }
