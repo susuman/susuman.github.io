@@ -1,16 +1,17 @@
-document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.0";
+document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.1";
 
 var svg = document.getElementById("id_svg");
 
 svg.addEventListener("touchstart", on_touch_svg);
-svg.addEventListener("mousedown", on_touch_svg);
+//svg.addEventListener("mousedown", on_touch_svg);
 svg.addEventListener("touchend", on_touch_svg);
+//svg.addEventListener("touchmove", on_touch_svg);
 
 var svg_rect = svg.getBoundingClientRect();
 
 function on_touch_svg(e)
 {
-	//var a = "lime";
+
 	for (var i = 0; i < e.changedTouches.length; i++)
 	{
 		var cerc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
