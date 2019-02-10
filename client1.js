@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.2";
+document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.3";
 
 var svg = document.getElementById("id_svg");
 
@@ -33,7 +33,9 @@ if(nr != a)
 
 function on_touch(e)
 {
-	setTimeout(function(){svg.remove(svg.appendChild);}, 3000);
-alert(nr);
+	if(setTimeout(function(){svg.remove(svg.appendChild);}, 3000) == true);
+		{
 	
+alert(nr);
+		}
 }
