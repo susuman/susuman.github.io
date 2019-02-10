@@ -34,13 +34,8 @@ if(nr != a)
 
 }
 
-function timp(e)
-{
-	setTimeout(function(){on_touch}, 5000);
-
 function on_touch(e)
 {	
 	setTimeout(function(){svg.remove(svg.appendChild);}, 5000)
 	setTimeout(function(){alert("ai apasat de "+nr+"ori");}, 6000);
-}
 }
