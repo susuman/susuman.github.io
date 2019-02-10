@@ -33,11 +33,10 @@ if(nr != a)
 }
 
 }
-var gol = function() {};
 
 function on_touch(e)
 {	
 	setTimeout(function(){svg.remove(svg.appendChild);}, 5000)
 	setTimeout(function(){alert("ai apasat de " nr " ori");}, 6000);
-	setTimeout(function(){alert(gol);}, 6500);
+	setTimeout(function(){alert("joc terminat");}, 6500);
 }
