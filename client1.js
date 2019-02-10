@@ -1,113 +1,21 @@
-document.getElementById("id_logic_version").innerHTML = "Logic Version 2000.00.00.0";
+document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.1";
 
-var canvas,
-    context,
-    dragging = false,
-    dragStartLocation,
-    snapshot,
-    fillBox;
+var svg = document.getElementById("id_svg");
 
+svg.addEventListener("touchstart", on_touch_svg);
+svg.addEventListener("mousedown", on_touch_svg);
 
-function getCanvasCoordinates(event) {
-    var x = event.clientX - canvas.getBoundingClientRect().left,
-        y = event.clientY - canvas.getBoundingClientRect().top;
+var svg_rect = svg.getBoundingClientRect();
 
-    return {x: x, y: y};
-}
-
-function takeSnapshot() {
-    snapshot = context.getImageData(0, 0, canvas.width, canvas.height);
-}
-
-function restoreSnapshot() {
-    context.putImageData(snapshot, 0, 0);
-}
-
-function drawLine(position) {
-    context.beginPath();
-    context.moveTo(dragStartLocation.x, dragStartLocation.y);
-    context.lineTo(position.x, position.y);
-    context.stroke();
-}
-
-function drawCircle(position) {
-    var radius = Math.sqrt(Math.pow((dragStartLocation.x - position.x), 2) + Math.pow((dragStartLocation.y - position.y), 2));
-    context.beginPath();
-    context.arc(dragStartLocation.x, dragStartLocation.y, radius, 0, 2 * Math.PI, false);
-}
-
-function drawPolygon(position, sides, angle) {
-    var coordinates = [],
-        radius = Math.sqrt(Math.pow((dragStartLocation.x - position.x), 2) + Math.pow((dragStartLocation.y - position.y), 2)),
-        index = 0;
-
-    for (index = 0; index < sides; index++) {
-        coordinates.push({x: dragStartLocation.x + radius * Math.cos(angle), y: dragStartLocation.y - radius * Math.sin(angle)});
-        angle += (2 * Math.PI) / sides;
-    }
-
-    context.beginPath();
-    context.moveTo(coordinates[0].x, coordinates[0].y);
-    for (index = 1; index < sides; index++) {
-        context.lineTo(coordinates[index].x, coordinates[index].y);
-    }
-
-    context.closePath();
-}
-
-function draw(position, shape) {
-    if (shape === "circle") {
-        drawCircle(position);
-    }
-    if (shape === "line") {
-        drawLine(position);
-    }
-
-    if (shape === "polygon") {
-        drawPolygon(position, 8, Math.PI / 4);
-    }
-    if (fillBox.checked) {
-        context.fill();
-    } else {
-        context.stroke();
-    }
-}
-
-function dragStart(event) {
-    dragging = true;
-    dragStartLocation = getCanvasCoordinates(event);
-    takeSnapshot();
-}
-
-function drag(event) {
-    var position;
-    if (dragging === true) {
-        restoreSnapshot();
-        position = getCanvasCoordinates(event);
-        draw(position, "polygon");
-
-    }
-}
-
-function dragStop(event) {
-    dragging = false;
-    restoreSnapshot();
-    var position = getCanvasCoordinates(event);
-    draw(position, "polygon");
-
+function on_touch_svg(e)
+{
+	for (var i = 0; i < e.changedTouches.length; i++)
+	{
+		var cerc = document.createElementNS("http://www.w3.org/2000/svg", "circle"); //creare element cerc in cazul nostru
+		cerc.setAttribute("cx", e.changedTouches[i].pageX);  //atributele cercului cu valorile din paranteze
+		cerc.setAttribute("cy", e.changedTouches[i].pageY - svg_rect.top);
+		cerc.setAttribute("r", 20);
+		svg.appendChild(cerc);  // adaugare in svg ca si "copil" (subelement)
 
 }
-
-function init() {
-    canvas = document.getElementById("canvas");
-    context = canvas.getContext('2d');
-    context.strokeStyle = 'green';
-    context.fillStyle = 'red';
-    context.lineWidth = 4;
-    context.lineCap = 'round';
-    fillBox = document.getElementById("fillBox");
-
-    canvas.addEventListener('touchstart', dragStart, false);
-    canvas.addEventListener('touchmove', drag, false);
-    canvas.addEventListener('touchend', dragStop, false);
 }
