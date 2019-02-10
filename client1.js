@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.5";
+document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.0";
 
 var svg = document.getElementById("id_svg");
 
@@ -33,11 +33,10 @@ if(nr != a)
 }
 
 }
-var gol = function() {};
 
 function on_touch(e)
 {	
 	setTimeout(function(){svg.remove(svg.appendChild);}, 5000)
 	setTimeout(function(){alert("ai apasat de "+nr+" ori");}, 6000);
-	setTimeout(function(){alert(gol);}, 6300);
+	setTimeout(function(){alert.remove(alert);}, 6300);
 }
