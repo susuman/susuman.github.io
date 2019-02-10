@@ -1,10 +1,10 @@
-document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.2";
+document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.3";
 
 var svg = document.getElementById("id_svg");
 
 svg.addEventListener("touchstart", on_touch_svg);
 //svg.addEventListener("mousedown", on_touch_svg);
-//svg.addEventListener("touchend", on_touch);
+svg.addEventListener("touchend", on_touch);
 //svg.addEventListener("touchmove", on_touch_svg);
 
 var svg_rect = svg.getBoundingClientRect();
@@ -20,6 +20,11 @@ function on_touch_svg(e)
 		cerc.setAttribute("r", 40);
 		cerc.setAttribute("fill", "blue");
 		svg.appendChild(cerc);
-		svg.remove(svg.appendChild);
+		
 }
+}
+
+function on_touch(e)
+{
+	svg.remove(svg.appendChild);
 }
