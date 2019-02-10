@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.3";
+document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.0";
 
 var svg = document.getElementById("id_svg");
 
@@ -10,14 +10,14 @@ var svg_rect = svg.getBoundingClientRect();
 
 function on_touch_svg(e)
 {
-	var a = "lime";
+	//var a = "lime";
 	for (var i = 0; i < e.changedTouches.length; i++)
 	{
 		var cerc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 		cerc.setAttribute("cx", e.changedTouches[i].pageX);
 		cerc.setAttribute("cy", e.changedTouches[i].pageY - svg_rect.top);
 		cerc.setAttribute("r", 40);
-		cerc.setAttribute("fill", a);
+		cerc.setAttribute("fill", "lime");
 		svg.appendChild(cerc);
 
 }
