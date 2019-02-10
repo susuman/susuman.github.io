@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.5";
+document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.0";
 
 var svg = document.getElementById("id_svg");
 
@@ -9,7 +9,10 @@ svg.addEventListener("touchend", on_touch);
 
 var svg_rect = svg.getBoundingClientRect();
 var nr = 0;
-var a;
+var a,c;
+
+alert("sa vedem cat de repede poti sa apesi :D");
+
 function on_touch_svg(e)
 {
 
@@ -20,12 +23,13 @@ function on_touch_svg(e)
 		cerc.setAttribute("cy", e.changedTouches[i].pageY - svg_rect.top);
 		cerc.setAttribute("r", 40);
 		cerc.setAttribute("fill", "blue");
-		a=svg.appendChild(cerc);
+		a = svg.appendChild(cerc);
 		
 }
 if(nr != a)
 {
 	nr++
+	c = nr
 }
 
 }
@@ -34,5 +38,5 @@ if(nr != a)
 function on_touch(e)
 {	
 	setTimeout(function(){svg.remove(svg.appendChild);}, 5000)
-	setTimeout(function(){alert(nr);}, 6000);
+	setTimeout(function(){alert("ai apasat de" c "ori");}, 6000);
 }
