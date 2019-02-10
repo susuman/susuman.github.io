@@ -29,7 +29,7 @@ function on_touch_svg(e)
 if(nr != a)
 {
 	nr++
-	c = nr
+	c = nr;
 }
 
 }
