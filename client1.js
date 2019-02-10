@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.4";
+document.getElementById("id_logic_version").innerHTML = "Logic: 2019.01.08.5";
 
 var svg = document.getElementById("id_svg");
 
@@ -8,7 +8,8 @@ svg.addEventListener("touchend", on_touch);
 //svg.addEventListener("touchmove", on_touch_svg);
 
 var svg_rect = svg.getBoundingClientRect();
-
+var a;
+var nr = 0;
 function on_touch_svg(e)
 {
 
@@ -22,10 +23,16 @@ function on_touch_svg(e)
 		svg.appendChild(cerc);
 		
 }
+if(a == svg.appendChild(cerc))
+{
+	var nr++
 }
+}
+
 
 function on_touch(e)
 {
 	setTimeout(function(){svg.remove(svg.appendChild);}, 3000);
+	alert("ai apasat de", nr);
 	
 }
